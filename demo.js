@@ -1,8 +1,8 @@
-import tSwitch from './js/tswitch.js';
+import tSwitch from './src/js/tswitch.js';
 
 const swch = new tSwitch({
     id: 'example-switch',
-    didMountCallback: true,
+    didMountCallback: false,
     onActivate: () => {
         console.log('YES!');
     },

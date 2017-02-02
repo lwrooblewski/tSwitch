@@ -2,8 +2,15 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-    entry: './demo.js',
-    output: {path: __dirname, filename: 'bundle.js'},
+    entry: {
+        bundle: './src/js/tswitch.js',
+        demo: './demo.js',
+    },
+    output: {
+        filename: '[name].js',
+        path: path.join(__dirname, './dist/'),
+
+    },
     module: {
         loaders: [
             {
