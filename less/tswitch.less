@@ -1,42 +1,28 @@
 html,body{
   margin:0;
   padding:0;
-  background-color:#ddd;
 }
 
-@s-height: 22px;
-@s-width: 35px;
+@height: 22px;
+@width: 35px;
 @color-change-duration: .2s;
 @movement-duration: .2s;
 
-@width: @s-width;
-@height: @s-height;
-.center{
-  position:absolute;
-  top:50%;
-  left:50%;
-  margin-top:(@s-height/2)*(-1);
-  margin-left:(@s-width/2)*(-1);
-}
-
 .t-switch{
-  .center;
   width:@width;
   height:@height;
   border-radius:@height/2;
   border:1px solid #dfdfdf;
   display:block;
   background-color:#fff;
-  //box-shadow: rgb(223, 223, 223) 0 0 0 0 inset;
   user-select: none;
   box-sizing: content-box;
   background-clip: content-box;
   cursor:pointer;
   transition: box-shadow @color-change-duration ease-in-out;
   &.active{
-    //box-shadow: rgb(93, 156, 236) 0 0 0 11px inset;
     small{
-      left:@s-width/3 + 2px;
+      left:@width/3 + 2px;
     }
   }
   &.disabled{
@@ -44,8 +30,8 @@ html,body{
     cursor:not-allowed;
   }
   small{
-    width:@s-height - 2px;
-    height:@s-height - 2px;
+    width:@height - 2px;
+    height:@height - 2px;
     border:1px solid #dfdfdf;
     background-color:#fff;
     border-radius: 50%;

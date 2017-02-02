@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -153,9 +153,6 @@ var tSwitch = function () {
         value: function applyCustomStyles() {
             this.destinationElement.style.backgroundColor = this.properties.background;
             this.destinationElement.classList.add(this.properties.size);
-            // if (this.destinationElement.classList.indexOf('isDisabled') > -1){
-            //     this.destinationElement.classList.add('disabled');
-            // }
         }
     }, {
         key: 'render',
@@ -188,7 +185,7 @@ exports.default = tSwitch;
 var content = __webpack_require__(2);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(4)(content, {});
+var update = __webpack_require__(3)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -206,76 +203,12 @@ if(false) {
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-exports = module.exports = __webpack_require__(3)();
-// imports
-
-
-// module
-exports.push([module.i, "html,\nbody {\n  margin: 0;\n  padding: 0;\n  background-color: #ddd;\n}\n.center {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  margin-top: -11px;\n  margin-left: -17.5px;\n}\n.t-switch {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  margin-top: -11px;\n  margin-left: -17.5px;\n  width: 35px;\n  height: 22px;\n  border-radius: 11px;\n  border: 1px solid #dfdfdf;\n  display: block;\n  background-color: #fff;\n  user-select: none;\n  box-sizing: content-box;\n  background-clip: content-box;\n  cursor: pointer;\n  transition: box-shadow 0.2s ease-in-out;\n}\n.t-switch.active small {\n  left: 13.66666667px;\n}\n.t-switch.disabled {\n  opacity: 0.6;\n  cursor: not-allowed;\n}\n.t-switch small {\n  width: 20px;\n  height: 20px;\n  border: 1px solid #dfdfdf;\n  background-color: #fff;\n  border-radius: 50%;\n  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);\n  display: block;\n  transition: left 0.2s ease-in-out;\n  position: relative;\n  left: 0;\n}\n", ""]);
-
-// exports
-
+throw new Error("Module build failed: variable @width is undefined\n @ /var/www/html/tswitch.library/less/tswitch.less (line 38, column 8)\n near lines:\n     }\n     width:@width;\n     height:@height;");
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports) {
-
-/*
-	MIT License http://www.opensource.org/licenses/mit-license.php
-	Author Tobias Koppers @sokra
-*/
-// css base code, injected by the css-loader
-module.exports = function() {
-	var list = [];
-
-	// return the list of modules as css string
-	list.toString = function toString() {
-		var result = [];
-		for(var i = 0; i < this.length; i++) {
-			var item = this[i];
-			if(item[2]) {
-				result.push("@media " + item[2] + "{" + item[1] + "}");
-			} else {
-				result.push(item[1]);
-			}
-		}
-		return result.join("");
-	};
-
-	// import a list of modules into the list
-	list.i = function(modules, mediaQuery) {
-		if(typeof modules === "string")
-			modules = [[null, modules, ""]];
-		var alreadyImportedModules = {};
-		for(var i = 0; i < this.length; i++) {
-			var id = this[i][0];
-			if(typeof id === "number")
-				alreadyImportedModules[id] = true;
-		}
-		for(i = 0; i < modules.length; i++) {
-			var item = modules[i];
-			// skip already imported module
-			// this implementation is not 100% perfect for weird media query combinations
-			//  when a module is imported multiple times with different media queries.
-			//  I hope this will never occur (Hey this way we have smaller bundles)
-			if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-				if(mediaQuery && !item[2]) {
-					item[2] = mediaQuery;
-				} else if(mediaQuery) {
-					item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-				}
-				list.push(item);
-			}
-		}
-	};
-	return list;
-};
-
-
-/***/ }),
-/* 4 */
 /***/ (function(module, exports) {
 
 /*
@@ -527,7 +460,7 @@ function updateLink(linkElement, obj) {
 
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
