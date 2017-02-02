@@ -133,7 +133,7 @@ var tSwitch = function () {
         this.destinationElement = false;
         this.render();
         this.applyCustomStyles();
-        this.setActiveState();
+        this.didMountActiveState();
         this.toggle = this.toggle.bind(this);
         this.getIsActive = this.getIsActive.bind(this);
         this.mountListeners();
@@ -145,18 +145,20 @@ var tSwitch = function () {
             referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
         }
     }, {
-        key: 'setActiveState',
-        value: function setActiveState() {
+        key: 'didMountActiveState',
+        value: function didMountActiveState() {
             if (this.properties.isDisabled === true) {
                 this.destinationElement.classList.add('disabled');
             }
 
             if (this.properties.isActive === true) {
                 this.destinationElement.classList.add('active');
+                this.properties.element.checked = true;
                 if (this.properties.didMountCallback === true) {
                     this.properties.onActivate();
                 }
             } else {
+                this.properties.element.checked = false;
                 if (this.properties.didMountCallback === true) {
                     this.properties.onDeactivate();
                 }
@@ -166,6 +168,21 @@ var tSwitch = function () {
         key: 'getIsActive',
         value: function getIsActive() {
             return this.properties.isActive;
+        }
+    }, {
+        key: 'setActive',
+        value: function setActive(status) {
+            if (status === true) {
+                this.properties.onActivate();
+                this.properties.isActive = true;
+                this.properties.element.checked = true;
+                this.destinationElement.style.boxShadow = this.properties.backgroundActive + ' 0 0 0 11px inset';
+            } else {
+                this.properties.onDeactivate();
+                this.properties.isActive = false;
+                this.properties.element.checked = false;
+                this.destinationElement.style.boxShadow = 'rgb(223, 223, 223) 0 0 0 0 inset';
+            }
         }
     }, {
         key: 'mountListeners',
@@ -180,15 +197,7 @@ var tSwitch = function () {
             }
             this.properties.onToggle(!this.properties.isActive);
             var status = this.destinationElement.classList.toggle('active');
-            if (status === true) {
-                this.properties.onActivate();
-                this.properties.isActive = true;
-                this.destinationElement.style.boxShadow = this.properties.backgroundActive + ' 0 0 0 11px inset';
-            } else {
-                this.properties.onDeactivate();
-                this.properties.isActive = false;
-                this.destinationElement.style.boxShadow = 'rgb(223, 223, 223) 0 0 0 0 inset';
-            }
+            this.setActive(status);
         }
     }, {
         key: 'applyCustomStyles',

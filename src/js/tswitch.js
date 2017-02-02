@@ -20,7 +20,7 @@ export default class tSwitch {
         this.destinationElement = false;
         this.render();
         this.applyCustomStyles();
-        this.setActiveState();
+        this.didMountActiveState();
         this.toggle = this.toggle.bind(this);
         this.getIsActive = this.getIsActive.bind(this);
         this.mountListeners();
@@ -30,17 +30,19 @@ export default class tSwitch {
         referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
     }
 
-    setActiveState() {
+    didMountActiveState() {
         if (this.properties.isDisabled === true) {
             this.destinationElement.classList.add('disabled');
         }
 
         if (this.properties.isActive === true) {
             this.destinationElement.classList.add('active');
+            this.properties.element.checked = true;
             if (this.properties.didMountCallback === true) {
                 this.properties.onActivate();
             }
         } else {
+            this.properties.element.checked = false;
             if (this.properties.didMountCallback === true) {
                 this.properties.onDeactivate();
             }
@@ -51,8 +53,22 @@ export default class tSwitch {
         return this.properties.isActive;
     }
 
+    setActive(status){
+        if (status === true) {
+            this.properties.onActivate();
+            this.properties.isActive = true;
+            this.properties.element.checked = true;
+            this.destinationElement.style.boxShadow = `${this.properties.backgroundActive} 0 0 0 11px inset`;
+        } else {
+            this.properties.onDeactivate();
+            this.properties.isActive = false;
+            this.properties.element.checked = false;
+            this.destinationElement.style.boxShadow = `rgb(223, 223, 223) 0 0 0 0 inset`;
+        }
+    }
+
     mountListeners() {
-        this.destinationElement.addEventListener("click", this.toggle);
+        this.destinationElement.addEventListener('click', this.toggle);
     }
 
     toggle() {
@@ -61,15 +77,7 @@ export default class tSwitch {
         }
         this.properties.onToggle(!this.properties.isActive);
         const status = this.destinationElement.classList.toggle('active');
-        if (status === true) {
-            this.properties.onActivate();
-            this.properties.isActive = true;
-            this.destinationElement.style.boxShadow = `${this.properties.backgroundActive} 0 0 0 11px inset`;
-        } else {
-            this.properties.onDeactivate();
-            this.properties.isActive = false;
-            this.destinationElement.style.boxShadow = `rgb(223, 223, 223) 0 0 0 0 inset`;
-        }
+        this.setActive(status);
     }
 
     applyCustomStyles() {
@@ -87,9 +95,9 @@ export default class tSwitch {
             return false;
         }
         this.replacedElement.style.display = 'none';
-        const destinationElement = document.createElement("span");
+        const destinationElement = document.createElement('span');
         destinationElement.classList.add('t-switch');
-        const smallElement = document.createElement("small");
+        const smallElement = document.createElement('small');
         destinationElement.appendChild(smallElement);
         this.destinationElement = destinationElement;
         this.properties.element.parentNode.insertBefore(destinationElement, this.properties.element.nextSibling);
