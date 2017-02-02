@@ -1,5 +1,4 @@
 import tSwitch from './js/tswitch.js';
-import css from './less/tswitch.less';
 
 const swch = new tSwitch({
     id: 'example-switch',
