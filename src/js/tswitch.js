@@ -82,9 +82,13 @@ export default class tSwitch {
             throw new Error('No valid ID was providen for element to render');
             return false;
         }
+        if (this.properties.element.getAttribute('type') !== 'checkbox'){
+            throw new Error('Pointed element is not a checkbox type');
+            return false;
+        }
         this.replacedElement.style.display = 'none';
         const destinationElement = document.createElement("span");
-        destinationElement.classList.add('t-switch')
+        destinationElement.classList.add('t-switch');
         const smallElement = document.createElement("small");
         destinationElement.appendChild(smallElement);
         this.destinationElement = destinationElement;
