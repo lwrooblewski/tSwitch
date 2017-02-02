@@ -1,12 +1,18 @@
 import tSwitch from './src/js/tswitch.js';
 
 const swch = new tSwitch({
-    id: 'example-switch',
-    didMountCallback: false,
+    element: document.getElementById('example-switch'),
     onActivate: () => {
-        console.log('YES!');
+        console.log('onActivate');
     },
     onDeactivate: () => {
-        console.log('NO!');
+        console.log('onDeactivate');
+    },
+    onToggle: (checked) => {
+        if (checked){
+            console.log('On toggle checked');
+        } else {
+            console.log('On toggle unchecked');
+        }
     }
 });

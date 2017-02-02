@@ -2,21 +2,27 @@ import css from '../less/tswitch.less';
 export default class tSwitch {
     constructor(props) {
         this.properties = {
-            id: (props.id) ? props.id : false,
+            element: (props.element) ? props.element : false,
             isActive: (props.isActive) ? props.isActive : false,
             isDisabled: (props.isDisabled) ? props.isDisabled : false,
             background: (props.background) ? props.background : '#FFF',
             backgroundActive: (props.backgroundActive) ? props.backgroundActive : '#5d9cec',
             size: (props.size) ? props.size : 'small',
-            onActivate: (props.onActivate) ? props.onActivate : false,
-            onDeactivate: (props.onDeactivate) ? props.onDeactivate : false,
+            onActivate: (props.onActivate) ? props.onActivate : (()=> {
+            }),
+            onDeactivate: (props.onDeactivate) ? props.onDeactivate : (()=> {
+            }),
+            onToggle: (props.onToggle) ? props.onToggle : (()=> {
+            }),
             didMountCallback: (props.didMountCallback) ? true : false,
         };
+        this.replacedElement = this.properties.element;
         this.destinationElement = false;
-        this.render(this.properties.id);
+        this.render();
         this.applyCustomStyles();
         this.setActiveState();
         this.toggle = this.toggle.bind(this);
+        this.getIsActive = this.getIsActive.bind(this);
         this.mountListeners();
     }
 
@@ -37,6 +43,10 @@ export default class tSwitch {
         }
     }
 
+    getIsActive() {
+        return this.properties.isActive;
+    }
+
     mountListeners() {
         this.destinationElement.addEventListener("click", this.toggle);
     }
@@ -45,10 +55,7 @@ export default class tSwitch {
         if (this.properties.isDisabled === true) {
             return false;
         }
-        if (typeof this.properties.onActivate !== 'function' || typeof this.properties.onDeactivate !== 'function') {
-            throw new Error('No valid callback were providen');
-            return false;
-        }
+        this.properties.onToggle(!this.properties.isActive);
         const status = this.destinationElement.classList.toggle('active');
         if (status === true) {
             this.properties.onActivate();
@@ -59,6 +66,7 @@ export default class tSwitch {
             this.properties.isActive = false;
             this.destinationElement.style.boxShadow = `rgb(223, 223, 223) 0 0 0 0 inset`;
         }
+        console.log(this.properties);
     }
 
     applyCustomStyles() {
@@ -66,14 +74,18 @@ export default class tSwitch {
         this.destinationElement.classList.add(this.properties.size);
     }
 
-    render(id) {
-        if (id === false) {
+    render() {
+        if (this.properties.element === false) {
             throw new Error('No valid ID was providen for element to render');
             return false;
         }
-        this.destinationElement = document.getElementById(this.properties.id);
+        // this.destinationElement = document.getElementById(this.properties.id);
+        this.replacedElement.style.display = 'none';
+        const destinationElement = document.createElement("span");
         const smallElement = document.createElement("small");
-        this.destinationElement.appendChild(smallElement);
+        destinationElement.appendChild(smallElement);
+        this.destinationElement = document.body.appendChild(destinationElement);
+        // document.appendChild(this.destinationElement);
         if (this.destinationElement.classList.length === 0 || (this.destinationElement.classList.length > 0 && this.destinationElement.classList.indexOf('t-switch') === -1)) {
             this.destinationElement.classList.add('t-switch');
         }

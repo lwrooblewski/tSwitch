@@ -1,13 +1,14 @@
 {
   "name": "tswitch",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "tSwitch library - iOS alternative for radio switch button.",
   "main": "dist/bundle.js",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
-    "prod": "webpack -p"
+    "prod": "webpack -p",
+    "dev": "webpack -p --watch"
   },
   "author": "Łukasz Wróblewski",
   "license": "ISC",
