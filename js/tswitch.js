@@ -63,9 +63,6 @@ export default class tSwitch {
     applyCustomStyles() {
         this.destinationElement.style.backgroundColor = this.properties.background;
         this.destinationElement.classList.add(this.properties.size);
-        // if (this.destinationElement.classList.indexOf('isDisabled') > -1){
-        //     this.destinationElement.classList.add('disabled');
-        // }
     }
 
     render(id) {
