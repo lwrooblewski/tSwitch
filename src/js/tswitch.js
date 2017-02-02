@@ -26,6 +26,10 @@ export default class tSwitch {
         this.mountListeners();
     }
 
+    insertAfter(newNode, referenceNode) {
+        referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+    }
+
     setActiveState() {
         if (this.properties.isDisabled === true) {
             this.destinationElement.classList.add('disabled');
@@ -66,7 +70,6 @@ export default class tSwitch {
             this.properties.isActive = false;
             this.destinationElement.style.boxShadow = `rgb(223, 223, 223) 0 0 0 0 inset`;
         }
-        console.log(this.properties);
     }
 
     applyCustomStyles() {
@@ -79,16 +82,13 @@ export default class tSwitch {
             throw new Error('No valid ID was providen for element to render');
             return false;
         }
-        // this.destinationElement = document.getElementById(this.properties.id);
         this.replacedElement.style.display = 'none';
         const destinationElement = document.createElement("span");
+        destinationElement.classList.add('t-switch')
         const smallElement = document.createElement("small");
         destinationElement.appendChild(smallElement);
-        this.destinationElement = document.body.appendChild(destinationElement);
-        // document.appendChild(this.destinationElement);
-        if (this.destinationElement.classList.length === 0 || (this.destinationElement.classList.length > 0 && this.destinationElement.classList.indexOf('t-switch') === -1)) {
-            this.destinationElement.classList.add('t-switch');
-        }
+        this.destinationElement = destinationElement;
+        this.properties.element.parentNode.insertBefore(destinationElement, this.properties.element.nextSibling);
     }
 }
 

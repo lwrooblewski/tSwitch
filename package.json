@@ -8,7 +8,7 @@
   },
   "scripts": {
     "prod": "webpack -p",
-    "dev": "webpack -p --watch"
+    "dev": "webpack --watch"
   },
   "author": "Łukasz Wróblewski",
   "license": "ISC",
