@@ -37,3 +37,6 @@ tSwitch replace checkbox input with custom component from now.
 `onActivate [function]` - callback when switch is being active  
 `onDeactivate [function]` - callback when switch is being deactivated  
 `onToggle [function]` - callback when switch state is being toggled  
+
+# Feedback
+Feel free to open issues or contribute. Contact me at <a href="mailto:l.wrooblewski@gmail.com">l.wrooblewski@gmail.com</a> or my <a href="https://pl.linkedin.com/in/wroblewskilukasz">LinkedIn profile</a>.
