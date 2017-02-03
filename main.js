@@ -1,5 +1,5 @@
 import tSwitch from './src/js/tswitch.js';
-
+import './src/less/tswitch.less';
 const swch = new tSwitch({
     element: document.getElementById('example-switch'),
     onActivate: () => {
