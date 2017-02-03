@@ -1,23 +1,27 @@
 {
   "name": "tswitch",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "tSwitch library - iOS alternative for radio switch button.",
-  "main": "dist/bundle.js",
+  "main": "dist/tswitch.js",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
-    "prod": "webpack -p",
+    "prepublish": "npm run prod && npm run css",
+    "css": "webpack -p",
+    "prod": "babel --presets es2015 -d dist/ src/js/",
     "dev": "webpack --watch"
   },
   "author": "Łukasz Wróblewski",
   "license": "ISC",
   "devDependencies": {
+    "babel-cli": "^6.22.2",
     "babel-core": "^6.4.5",
     "babel-loader": "^6.2.1",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
     "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "^2.0.0-rc.2",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
     "style-loader": "^0.13.1",
@@ -27,6 +31,5 @@
     "type": "git",
     "url": "https://github.com/lwrooblewski/tSwitch"
   },
-  "browserDependencies": {
-  }
+  "browserDependencies": {}
 }

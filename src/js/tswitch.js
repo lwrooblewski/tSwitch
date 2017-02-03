@@ -1,4 +1,3 @@
-import css from '../less/tswitch.less';
 export default class tSwitch {
     constructor(props) {
         this.properties = {
@@ -108,4 +107,4 @@ export default class tSwitch {
     }
 }
 
-module.exports = tSwitch;
+// module.exports = tSwitch;
