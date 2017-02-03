@@ -5,7 +5,8 @@ Lightweight plugin for replacing standard checkbox with iOS-like design switch. 
 
 # Short example:
 ````javascript
-import tswitch from 'tswitch'  
+import tswitch from 'tswitch'
+
 const swch = new tswitch({
   element: document.getElementById('example-switch'),
   onActivate: () => {
@@ -38,5 +39,7 @@ tSwitch replace checkbox input with custom component from now.
 `onDeactivate [function]` - callback when switch is being deactivated  
 `onToggle [function]` - callback when switch state is being toggled  
 
+
 # Feedback
 Feel free to open issues or contribute. Contact me at <a href="mailto:l.wrooblewski@gmail.com">l.wrooblewski@gmail.com</a> or my <a href="https://pl.linkedin.com/in/wroblewskilukasz">LinkedIn profile</a>.
+
