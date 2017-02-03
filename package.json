@@ -1,6 +1,6 @@
 {
   "name": "tswitch",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "description": "tSwitch library - iOS alternative for radio switch button.",
   "main": "dist/tswitch.js",
   "directories": {
