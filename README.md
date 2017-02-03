@@ -5,7 +5,8 @@ Lightweight plugin for replacing standard checkbox with iOS-like design switch. 
 
 # Short example:
 ````javascript
-import tswitch from 'tswitch'
+import 'tswitch/dist/styles.css';
+import tSwitch from 'tswitch'
 
 const swch = new tswitch({
   element: document.getElementById('example-switch'),
