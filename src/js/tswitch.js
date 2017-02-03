@@ -108,3 +108,4 @@ export default class tSwitch {
     }
 }
 
+module.exports = tSwitch;
