@@ -31,6 +31,10 @@ export default class tSwitch {
     }
 
     didMountActiveState() {
+        if (this.properties.element.checked === true){
+            this.properties.isActive = true;
+        }
+
         if (this.properties.isDisabled === true) {
             this.destinationElement.classList.add('disabled');
         }
