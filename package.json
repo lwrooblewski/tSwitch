@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "prepublish": "npm run prod && npm run css",
+    "prepublish": "npm version patch && npm run prod && npm run css",
     "css": "webpack -p",
     "prod": "babel --presets es2015 -d dist/ src/js/",
     "dev": "webpack --watch"

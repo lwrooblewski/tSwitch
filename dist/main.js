@@ -1,1 +1,254 @@
-!function(e){function t(s){if(i[s])return i[s].exports;var n=i[s]={i:s,l:!1,exports:{}};return e[s].call(n.exports,n,n.exports,t),n.l=!0,n.exports}var i={};return t.m=e,t.c=i,t.i=function(e){return e},t.d=function(e,i,s){t.o(e,i)||Object.defineProperty(e,i,{configurable:!1,enumerable:!0,get:s})},t.n=function(e){var i=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(i,"a",i),i},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="",t(t.s=2)}([function(e,t,i){"use strict";function s(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var n=function(){function e(e,t){for(var i=0;i<t.length;i++){var s=t[i];s.enumerable=s.enumerable||!1,s.configurable=!0,"value"in s&&(s.writable=!0),Object.defineProperty(e,s.key,s)}}return function(t,i,s){return i&&e(t.prototype,i),s&&e(t,s),t}}(),r=function(){function e(t){s(this,e),this.properties={element:!!t.element&&t.element,isActive:!!t.isActive&&t.isActive,isDisabled:!!t.isDisabled&&t.isDisabled,background:t.background?t.background:"#FFF",backgroundActive:t.backgroundActive?t.backgroundActive:"#5d9cec",size:t.size?t.size:"small",onActivate:t.onActivate?t.onActivate:function(){},onDeactivate:t.onDeactivate?t.onDeactivate:function(){},onToggle:t.onToggle?t.onToggle:function(){},didMountCallback:!!t.didMountCallback},this.replacedElement=this.properties.element,this.destinationElement=!1,this.render(),this.applyCustomStyles(),this.didMountActiveState(),this.toggle=this.toggle.bind(this),this.getIsActive=this.getIsActive.bind(this),this.mountListeners()}return n(e,[{key:"insertAfter",value:function(e,t){t.parentNode.insertBefore(e,t.nextSibling)}},{key:"didMountActiveState",value:function(){this.properties.element.checked===!0&&(this.properties.isActive=!0),this.properties.isDisabled===!0&&this.destinationElement.classList.add("disabled"),this.properties.isActive===!0?(this.destinationElement.classList.add("active"),this.properties.element.checked=!0,this.properties.didMountCallback===!0&&this.properties.onActivate()):(this.properties.element.checked=!1,this.properties.didMountCallback===!0&&this.properties.onDeactivate())}},{key:"getIsActive",value:function(){return this.properties.isActive}},{key:"setActive",value:function(e){e===!0?(this.properties.onActivate(),this.properties.isActive=!0,this.properties.element.checked=!0,this.destinationElement.style.boxShadow=this.properties.backgroundActive+" 0 0 0 11px inset"):(this.properties.onDeactivate(),this.properties.isActive=!1,this.properties.element.checked=!1,this.destinationElement.style.boxShadow="rgb(223, 223, 223) 0 0 0 0 inset")}},{key:"mountListeners",value:function(){this.destinationElement.addEventListener("click",this.toggle)}},{key:"toggle",value:function(){if(this.properties.isDisabled===!0)return!1;this.properties.onToggle(!this.properties.isActive);var e=this.destinationElement.classList.toggle("active");this.setActive(e)}},{key:"applyCustomStyles",value:function(){this.destinationElement.style.backgroundColor=this.properties.background,this.destinationElement.classList.add(this.properties.size)}},{key:"render",value:function(){if(this.properties.element===!1)throw new Error("No valid ID was providen for element to render");if("checkbox"!==this.properties.element.getAttribute("type"))throw new Error("Pointed element is not a checkbox type");this.replacedElement.style.display="none";var e=document.createElement("span");e.classList.add("t-switch");var t=document.createElement("small");e.appendChild(t),this.destinationElement=e,this.properties.element.parentNode.insertBefore(e,this.properties.element.nextSibling)}}]),e}();t.default=r},function(e,t){throw new Error("Module build failed: Error\n    at /var/www/html/tswitch.library/node_modules/webpack/lib/NormalModule.js:141:35\n    at /var/www/html/tswitch.library/node_modules/loader-runner/lib/LoaderRunner.js:364:11\n    at /var/www/html/tswitch.library/node_modules/loader-runner/lib/LoaderRunner.js:230:18\n    at context.callback (/var/www/html/tswitch.library/node_modules/loader-runner/lib/LoaderRunner.js:111:13)\n    at /var/www/html/tswitch.library/node_modules/less-loader/index.js:68:16\n    at /var/www/html/tswitch.library/node_modules/less/lib/less/render.js:33:38\n    at /var/www/html/tswitch.library/node_modules/less/lib/less/parse.js:63:17\n    at ImportVisitor.finish [as _finish] (/var/www/html/tswitch.library/node_modules/less/lib/less/parser/parser.js:183:28)\n    at ImportVisitor._onSequencerEmpty (/var/www/html/tswitch.library/node_modules/less/lib/less/visitors/import-visitor.js:35:14)\n    at ImportSequencer.tryRun (/var/www/html/tswitch.library/node_modules/less/lib/less/visitors/import-sequencer.js:50:14)\n    at ImportVisitor.run (/var/www/html/tswitch.library/node_modules/less/lib/less/visitors/import-visitor.js:29:25)\n    at Object.parse (/var/www/html/tswitch.library/node_modules/less/lib/less/parser/parser.js:189:22)\n    at Object.parse (/var/www/html/tswitch.library/node_modules/less/lib/less/parse.js:61:18)\n    at Object.render (/var/www/html/tswitch.library/node_modules/less/lib/less/render.js:25:18)\n    at Object.module.exports (/var/www/html/tswitch.library/node_modules/less-loader/index.js:62:7)")},function(e,t,i){"use strict";function s(e){return e&&e.__esModule?e:{default:e}}var n=i(0),r=s(n);i(1);new r.default({element:document.getElementById("example-switch"),onActivate:function(){console.log("onActivate")},onDeactivate:function(){console.log("onDeactivate")},onToggle:function(e){e?console.log("On toggle checked"):console.log("On toggle unchecked")}})}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+
+
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+
+/******/ 	// identity function for calling harmony imports with the correct context
+/******/ 	__webpack_require__.i = function(value) { return value; };
+
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var tSwitch = function () {
+    function tSwitch(props) {
+        _classCallCheck(this, tSwitch);
+
+        this.properties = {
+            element: props.element ? props.element : false,
+            isActive: props.isActive ? props.isActive : false,
+            isDisabled: props.isDisabled ? props.isDisabled : false,
+            background: props.background ? props.background : '#FFF',
+            backgroundActive: props.backgroundActive ? props.backgroundActive : '#5d9cec',
+            size: props.size ? props.size : 'medium',
+            additionalClass: props.additionalClass ? props.additionalClass : '',
+            onActivate: props.onActivate ? props.onActivate : function () {},
+            onDeactivate: props.onDeactivate ? props.onDeactivate : function () {},
+            onToggle: props.onToggle ? props.onToggle : function () {},
+            didMountCallback: props.didMountCallback ? true : false
+        };
+        this.replacedElement = this.properties.element;
+        this.destinationElement = false;
+        this.render();
+        this.applyCustomStyles();
+        this.didMountActiveState();
+        this.toggle = this.toggle.bind(this);
+        this.getIsActive = this.getIsActive.bind(this);
+        this.mountListeners();
+    }
+
+    _createClass(tSwitch, [{
+        key: 'insertAfter',
+        value: function insertAfter(newNode, referenceNode) {
+            referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+        }
+    }, {
+        key: 'didMountActiveState',
+        value: function didMountActiveState() {
+            if (this.properties.element.checked === true) {
+                this.properties.isActive = true;
+            }
+
+            if (this.properties.isDisabled === true) {
+                this.destinationElement.classList.add('disabled');
+            }
+
+            if (this.properties.isActive === true) {
+                this.destinationElement.classList.add('active');
+                this.properties.element.checked = true;
+                if (this.properties.didMountCallback === true) {
+                    this.properties.onActivate();
+                }
+            } else {
+                this.properties.element.checked = false;
+                if (this.properties.didMountCallback === true) {
+                    this.properties.onDeactivate();
+                }
+            }
+        }
+    }, {
+        key: 'getIsActive',
+        value: function getIsActive() {
+            return this.properties.isActive;
+        }
+    }, {
+        key: 'setActive',
+        value: function setActive(status) {
+            if (status === true) {
+                this.properties.onActivate();
+                this.properties.isActive = true;
+                this.properties.element.checked = true;
+                this.destinationElement.style.boxShadow = this.properties.backgroundActive + ' 0 0 0 11px inset';
+            } else {
+                this.properties.onDeactivate();
+                this.properties.isActive = false;
+                this.properties.element.checked = false;
+                this.destinationElement.style.boxShadow = 'rgb(223, 223, 223) 0 0 0 0 inset';
+            }
+        }
+    }, {
+        key: 'mountListeners',
+        value: function mountListeners() {
+            this.destinationElement.addEventListener('click', this.toggle);
+        }
+    }, {
+        key: 'toggle',
+        value: function toggle() {
+            if (this.properties.isDisabled === true) {
+                return false;
+            }
+            this.properties.onToggle(!this.properties.isActive);
+            var status = this.destinationElement.classList.toggle('active');
+            this.setActive(status);
+        }
+    }, {
+        key: 'applyCustomStyles',
+        value: function applyCustomStyles() {
+            this.destinationElement.style.backgroundColor = this.properties.background;
+            this.destinationElement.classList.add(this.properties.size);
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            if (this.properties.element === false) {
+                throw new Error('No valid ID was providen for element to render');
+                return false;
+            }
+            if (this.properties.element.getAttribute('type') !== 'checkbox') {
+                throw new Error('Pointed element is not a checkbox type');
+                return false;
+            }
+            this.replacedElement.style.display = 'none';
+            var destinationElement = document.createElement('span');
+            destinationElement.classList.add('t-switch');
+            var smallElement = document.createElement('small');
+            destinationElement.appendChild(smallElement);
+            this.destinationElement = destinationElement;
+            this.properties.element.parentNode.insertBefore(destinationElement, this.properties.element.nextSibling);
+            if (this.properties.additionalClass) {
+                destinationElement.classList.add(this.properties.additionalClass);
+            }
+        }
+    }]);
+
+    return tSwitch;
+}();
+
+// module.exports = tSwitch;
+
+
+exports.default = tSwitch;
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _tswitch = __webpack_require__(0);
+
+var _tswitch2 = _interopRequireDefault(_tswitch);
+
+__webpack_require__(1);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var swch = new _tswitch2.default({
+    element: document.getElementById('example-switch'),
+    size: 'x-small',
+    additionalClass: 'lorem',
+    onActivate: function onActivate() {
+        console.log('onActivate');
+    },
+    onDeactivate: function onDeactivate() {
+        console.log('onDeactivate');
+    },
+    onToggle: function onToggle(checked) {
+        if (checked) {
+            console.log('On toggle checked');
+        } else {
+            console.log('On toggle unchecked');
+        }
+    }
+});
+
+/***/ })
+/******/ ]);

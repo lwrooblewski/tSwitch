@@ -6,7 +6,8 @@ export default class tSwitch {
             isDisabled: (props.isDisabled) ? props.isDisabled : false,
             background: (props.background) ? props.background : '#FFF',
             backgroundActive: (props.backgroundActive) ? props.backgroundActive : '#5d9cec',
-            size: (props.size) ? props.size : 'small',
+            size: (props.size) ? props.size : 'medium',
+            additionalClass: (props.additionalClass) ? props.additionalClass : '',
             onActivate: (props.onActivate) ? props.onActivate : (()=> {
             }),
             onDeactivate: (props.onDeactivate) ? props.onDeactivate : (()=> {
@@ -104,6 +105,9 @@ export default class tSwitch {
         destinationElement.appendChild(smallElement);
         this.destinationElement = destinationElement;
         this.properties.element.parentNode.insertBefore(destinationElement, this.properties.element.nextSibling);
+        if (this.properties.additionalClass){
+            destinationElement.classList.add(this.properties.additionalClass);
+        }
     }
 }
 
