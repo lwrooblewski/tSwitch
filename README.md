@@ -31,6 +31,8 @@ tSwitch replace checkbox input with custom component from now.
 # Options
 
 `element` - selected HTMLElement object  
+`additionalClass [string]` - optional parameter which adds string to a tSwitch class list  
+`size [string | default 'medium' | 'x-small' | 'small' | 'medium' | 'large' ]` - sets class with associated scale transform  
 `isActive [boolean | default false]` - sets start active state  
 `isDisabled [boolean | default false]` - sets start disabled state   
 `background [string | default #FFF]` - sets background color  
