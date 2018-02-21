@@ -42,6 +42,9 @@ tSwitch replace checkbox input with custom component from now.
 `onDeactivate [function]` - callback when switch is being deactivated  
 `onToggle [function]` - callback when switch state is being toggled  
 
+# Methods
+`getIsActive() [boolean]` - return boolean depends on switch state
+`setActive(bool) [boolean]` - changes switch state depends on argument
 
 # Feedback
 Feel free to open issues or contribute. Contact me at <a href="mailto:l.wrooblewski@gmail.com">l.wrooblewski@gmail.com</a> or my <a href="https://pl.linkedin.com/in/wroblewskilukasz">LinkedIn profile</a>.

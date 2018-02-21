@@ -60,11 +60,13 @@ export default class tSwitch {
     setActive(status){
         if (status === true) {
             this.properties.onActivate();
+            this.destinationElement.classList.add('active');
             this.properties.isActive = true;
             this.properties.element.checked = true;
             this.destinationElement.style.boxShadow = `${this.properties.backgroundActive} 0 0 0 11px inset`;
         } else {
             this.properties.onDeactivate();
+            this.destinationElement.classList.remove('active');
             this.properties.isActive = false;
             this.properties.element.checked = false;
             this.destinationElement.style.boxShadow = `rgb(223, 223, 223) 0 0 0 0 inset`;
@@ -91,7 +93,7 @@ export default class tSwitch {
 
     render() {
         if (this.properties.element === false) {
-            throw new Error('No valid ID was providen for element to render');
+            throw new Error('No valid element was providen for element property to render');
             return false;
         }
         if (this.properties.element.getAttribute('type') !== 'checkbox'){

@@ -1,77 +1,4 @@
-/******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-/******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
-/******/ 			return installedModules[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-/******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// identity function for calling harmony imports with the correct context
-/******/ 	__webpack_require__.i = function(value) { return value; };
-/******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, {
-/******/ 				configurable: false,
-/******/ 				enumerable: true,
-/******/ 				get: getter
-/******/ 			});
-/******/ 		}
-/******/ 	};
-/******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-/******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
-/******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
-/******/ })
-/************************************************************************/
-/******/ ([
-/* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -147,13 +74,11 @@ var tSwitch = function () {
         value: function setActive(status) {
             if (status === true) {
                 this.properties.onActivate();
-                this.destinationElement.classList.add('active');
                 this.properties.isActive = true;
                 this.properties.element.checked = true;
                 this.destinationElement.style.boxShadow = this.properties.backgroundActive + ' 0 0 0 11px inset';
             } else {
                 this.properties.onDeactivate();
-                this.destinationElement.classList.remove('active');
                 this.properties.isActive = false;
                 this.properties.element.checked = false;
                 this.destinationElement.style.boxShadow = 'rgb(223, 223, 223) 0 0 0 0 inset';
@@ -184,7 +109,7 @@ var tSwitch = function () {
         key: 'render',
         value: function render() {
             if (this.properties.element === false) {
-                throw new Error('No valid element was providen for element property to render');
+                throw new Error('No valid ID was providen for element to render');
                 return false;
             }
             if (this.properties.element.getAttribute('type') !== 'checkbox') {
@@ -211,46 +136,3 @@ var tSwitch = function () {
 
 
 exports.default = tSwitch;
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _tswitch = __webpack_require__(0);
-
-var _tswitch2 = _interopRequireDefault(_tswitch);
-
-__webpack_require__(1);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-window.swch = new _tswitch2.default({
-    element: document.getElementById('example-switch'),
-    size: 'x-small',
-    additionalClass: 'lorem',
-    onActivate: function onActivate() {
-        console.log('onActivate');
-    },
-    onDeactivate: function onDeactivate() {
-        console.log('onDeactivate');
-    },
-    onToggle: function onToggle(checked) {
-        if (checked) {
-            console.log('On toggle checked');
-        } else {
-            console.log('On toggle unchecked');
-        }
-    }
-});
-
-/***/ })
-/******/ ]);
