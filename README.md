@@ -44,7 +44,8 @@ tSwitch replace checkbox input with custom component from now.
 
 # Methods
 `getIsActive() [boolean]` - return boolean depends on switch state
-`setActive(bool) [boolean]` - changes switch state depends on argument
+`setActive(newStatus, preventCallback) [boolean]` - changes switch state depends on newStatus and execute or not onActivate or onDeactivate callback
+
 
 # Feedback
 Feel free to open issues or contribute. Contact me at <a href="mailto:l.wrooblewski@gmail.com">l.wrooblewski@gmail.com</a> or my <a href="https://pl.linkedin.com/in/wroblewskilukasz">LinkedIn profile</a>.

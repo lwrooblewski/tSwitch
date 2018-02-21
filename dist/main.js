@@ -145,14 +145,20 @@ var tSwitch = function () {
     }, {
         key: 'setActive',
         value: function setActive(status) {
+            var preventCallback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
             if (status === true) {
-                this.properties.onActivate();
+                if (!preventCallback) {
+                    this.properties.onActivate();
+                }
                 this.destinationElement.classList.add('active');
                 this.properties.isActive = true;
                 this.properties.element.checked = true;
                 this.destinationElement.style.boxShadow = this.properties.backgroundActive + ' 0 0 0 11px inset';
             } else {
-                this.properties.onDeactivate();
+                if (!preventCallback) {
+                    this.properties.onDeactivate();
+                }
                 this.destinationElement.classList.remove('active');
                 this.properties.isActive = false;
                 this.properties.element.checked = false;
