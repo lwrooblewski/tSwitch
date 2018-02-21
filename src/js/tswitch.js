@@ -73,7 +73,7 @@ export default class tSwitch {
             this.destinationElement.classList.remove('active');
             this.properties.isActive = false;
             this.properties.element.checked = false;
-            this.destinationElement.style.boxShadow = `rgb(223, 223, 223) 0 0 0 0 inset`;
+            this.destinationElement.style.boxShadow = `${this.properties.background} 0 0 0 11px inset`;
         }
     }
 
